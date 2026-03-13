@@ -1,31 +1,17 @@
 def validate_book_input(title: str, author: str, year_text: str, genre: str) -> tuple[bool, str]:
-    """Kontrollib, kas raamatu sisestusväljad sisaldavad sobivaid väärtusi."""
+    """Kontrollib raamatu lisamise või uuendamise andmeid."""
+    if not title.strip():
+        return False, "Pealkiri ei tohi olla tühi."
+    if not author.strip():
+        return False, "Autor ei tohi olla tühi."
+    if not genre.strip():
+        return False, "Žanr ei tohi olla tühi."
 
-    title = title.strip()
-    author = author.strip()
-    year_text = year_text.strip()
-    genre = genre.strip()
+    try:
+        year = int(year_text)
+        if year < 0 or year > 2100:
+            return False, "Aasta peab olema vahemikus 0–2100."
+    except ValueError:
+        return False, "Aasta peab olema number."
 
-    if not title:
-        return False, "Pealkiri on kohustuslik."
-    if not author:
-        return False, "Autor on kohustuslik."
-    if not year_text:
-        return False, "Aasta on kohustuslik."
-    if not genre:
-        return False, "Žanr on kohustuslik."
-    if not year_text.isdigit():
-        return False, "Aasta peab olema täisarv."
-
-    year = int(year_text)
-    if year < 1450 or year > 2100:
-        return False, "Aasta peab jääma vahemikku 1450 kuni 2100."
-
-    if len(title) > 120:
-        return False, "Pealkiri on liiga pikk."
-    if len(author) > 80:
-        return False, "Autori nimi on liiga pikk."
-    if len(genre) > 40:
-        return False, "Žanri väärtus on liiga pikk."
-
-    return True, ""
+    return True, "Sisend on korrektne"

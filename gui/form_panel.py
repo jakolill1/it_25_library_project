@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+from gui.stats_panel import StatsPanel
 import tkinter as tk
 from tkinter import ttk
 

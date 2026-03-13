@@ -5,7 +5,7 @@
     "author": "A. H. Tammsaare",
     "year": 1926,
     "genre": "Romaan",
-    "is_borrowed": false
+    "is_borrowed": true
   },
   {
     "id": 2,
@@ -69,6 +69,6 @@
     "author": "Rowling",
     "year": 1995,
     "genre": "Ulme",
-    "is_borrowed": false
+    "is_borrowed": true
   }
 ]
